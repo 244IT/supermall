@@ -1,7 +1,7 @@
 <template>
     <ul class="goods-container">
       <li class="goods-item" v-for="(item, index) in goodItem" :key="index">
-        <img :src="item.show.img" />
+        <img :src="item.show.img" @load="imageLoad"/>
         <div class="goods-info">
           <p>{{item.title}}</p>
           <span class="price">{{item.price}}</span>
@@ -17,7 +17,12 @@ export default {
     goodItem: {
       
     }
-  }
+  },
+  methods: {
+    imageLoad() {
+      this.$bus.$emit('imageLoad')
+    }
+  },
 }
 </script>
 <style scoped>
