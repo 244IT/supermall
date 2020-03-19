@@ -1,18 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-
 const Home = () => import('../views/home/Home.vue')
 const Category = () => import('../views/category/Category.vue')
 const Profile = () => import('../views/profile/Profile.vue')
 const Shopcart = () => import('../views/shopcart/Shopcart.vue')
-
+const Detail = () => import('../views/detail/Detail.vue')
 
 Vue.use(VueRouter)
 
+const originallPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location){
+  return originallPush.call(this, location).catch(err => err)
+}
+
 const routes = [
   {
-    path: '',
+    path: '/',
     redirect: '/home'
   },
   {
@@ -30,6 +34,10 @@ const routes = [
   {
     path: '/profile',
     component: Profile
+  },
+  {
+    path: '/detail/:id',
+    component: Detail
   },
 ]
 

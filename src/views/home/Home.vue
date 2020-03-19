@@ -46,7 +46,8 @@ export default {
       currentType: 'pop', //保存当前的商品类型
       isShowBackTop: false, //控制返回顶部组件的显示隐藏
       tabOffsetTop: 0, //保存tabBack的offsetTop值
-      isTabControllShow: false //保存替换的tabControl是否显示
+      isTabControllShow: false, //保存替换的tabControl是否显示
+      sizeY: 0
     }
   },
   components: {
@@ -74,6 +75,17 @@ export default {
     this.$bus.$on('imageLoad',() => {
       refresh()
     })
+  },
+  destroyed() {
+    console.log('destroyed')
+  },
+  activated() {
+    this.$refs.scroll.refresh()
+    this.$refs.scroll.scrollTo(0, this.sizeY, 0)
+    
+  },
+  deactivated() {
+    this.sizeY = this.$refs.scroll.scroll.y
   },
   methods: {
     //防抖函数

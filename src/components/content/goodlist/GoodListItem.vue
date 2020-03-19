@@ -1,6 +1,6 @@
 <template>
     <ul class="goods-container">
-      <li class="goods-item" v-for="(item, index) in goodItem" :key="index">
+      <li class="goods-item" v-for="(item, index) in goodItem" :key="index" @click="itemClick(index)">
         <img :src="item.show.img" @load="imageLoad"/>
         <div class="goods-info">
           <p>{{item.title}}</p>
@@ -21,6 +21,9 @@ export default {
   methods: {
     imageLoad() {
       this.$bus.$emit('imageLoad')
+    },
+    itemClick(index) {
+      this.$router.push('/detail/' + this.goodItem[index].iid )
     }
   },
 }
