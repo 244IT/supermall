@@ -82,7 +82,6 @@ export default {
   activated() {
     this.$refs.scroll.refresh()
     this.$refs.scroll.scrollTo(0, this.sizeY, 0)
-    
   },
   deactivated() {
     this.sizeY = this.$refs.scroll.scroll.y
