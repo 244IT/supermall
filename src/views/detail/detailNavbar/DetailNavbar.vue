@@ -26,6 +26,7 @@ export default {
   methods: {
     clickActive(index) {
       this.currentIndex = index
+      this.$emit("navClick", index)
     },
     imgClick() {
       this.$router.go(-1)

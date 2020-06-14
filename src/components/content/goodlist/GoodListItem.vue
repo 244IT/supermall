@@ -1,14 +1,12 @@
 <template>
-    <ul class="goods-container">
-      <li class="goods-item" v-for="(item, index) in goodItem" :key="index" @click="itemClick(index)">
-        <img :src="item.show.img" @load="imageLoad"/>
-        <div class="goods-info">
-          <p>{{item.title}}</p>
-          <span class="price">{{item.price}}</span>
-          <span class="collect">{{item.cfav}}</span>
-        </div>
-      </li>
-    </ul>
+  <div class="goods-item"  @click="itemClick">
+    <img :src="showImg" @load="imageLoad"/>
+    <div class="goods-info">
+      <p>{{goodItem.title}}</p>
+      <span class="price">{{goodItem.price}}</span>
+      <span class="collect">{{goodItem.cfav}}</span>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -22,8 +20,13 @@ export default {
     imageLoad() {
       this.$bus.$emit('imageLoad')
     },
-    itemClick(index) {
-      this.$router.push('/detail/' + this.goodItem[index].iid )
+    itemClick() {
+      this.$router.push('/detail/' + this.goodItem.iid )
+    }
+  },
+  computed: {
+    showImg() {
+      return this.goodItem.image || this.goodItem.show.img
     }
   },
 }

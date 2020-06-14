@@ -1,5 +1,7 @@
 import { request } from 'network/network_test'
 
+
+// 商品详情接口
 export function getDetailGoods(iid) {
   return request({
     url: '/detail',
@@ -8,6 +10,13 @@ export function getDetailGoods(iid) {
     }
   })
 }
+// 推荐商品接口
+export function getDetailRecommend() {
+  return request({
+    url: '/recommend',
+  })
+}
+
 //同意保存商品详情页的数据
 export class Goods {
 	constructor(itemInfo, columns, services) {
