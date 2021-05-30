@@ -1,7 +1,6 @@
 import axios from 'axios'
-import qs from 'qs'
 
-export default function axios(option) {
+export default function request(option) {
 	return new Promise((resolve, reject) => {
 		// 1.创建axios的实例
 		const instance = axios.create({
@@ -13,12 +12,10 @@ export default function axios(option) {
 		instance.interceptors.request.use(config => {
 			return config
 		}, err => {
-			// console.log('来到了request拦截failure中');
 			return err
 		})
 
 		instance.interceptors.response.use(response => {
-			// console.log('来到了response拦截success中');
 			return response.data
 		}, err => {
       if (err && err.response) {

@@ -1,18 +1,51 @@
 <template>
   <div id="home">
-    <!-- 头部导航 -->
-    <nav-bar :backgroundColor="'#FF5777'">
-      <div slot="center">购物街</div>
-    </nav-bar>
-    <div>首页</div>
+    <home-nav-bar />
+    <home-swiper :banners="banners"/>
+    <home-recommend :recommends="recommends" />
+    <home-population/>
   </div>
 </template>
 
 <script>
-import NavBar from 'common/navbar/NavBar.vue'
+import HomeNavBar from './childCpns/HomeNavBar'
+import HomeSwiper from './childCpns/HomeSwiper'
+import HomeRecommend from './childCpns/HomeRecommend'
+import HomePopulation from './childCpns/HomePopulation'
+import { getHomeMultidata } from 'network/home.js'
+
+
+
 export default {
   components: {
-    NavBar
+    HomeNavBar,
+    HomeSwiper,
+    HomeRecommend,
+    HomePopulation,
+  },
+  data() {
+    
+    return {
+      banners: [], // 轮播图
+      recommends: [], // 推荐
+    }
+  },
+  /* -----------------------------页面生命周期------------------------ */
+  created() {
+    // 获取首页数据
+    this.getHomeMultidata()
+  },
+
+  /* -----------------------------页面方法---------------------------- */
+  methods: {
+    /* 获取首页数据 */
+    async getHomeMultidata() {
+      const result = await getHomeMultidata()
+
+      this.banners = result.data.banner.list
+      this.recommends =  result.data.recommend.list
+    }
+
   }
 }
 </script>
