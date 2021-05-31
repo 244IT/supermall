@@ -25,7 +25,10 @@ export default {
   methods: {
     /* 选中tab */ 
     onTab(index) {
+      console.log('选择')
       this.tabIndex = index
+
+      this.$emit('onTab', { index })
     },
   }
 }
