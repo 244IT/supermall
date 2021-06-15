@@ -36,9 +36,13 @@ export default {
 
 <style scoped>
   .tab{
+    position: sticky;
+    z-index: 1;
+    top: 44px;
     display: flex;
     justify-content: space-between;
     color: #222;
+    background-color: #FFF;
   }
 
   .tab-item{

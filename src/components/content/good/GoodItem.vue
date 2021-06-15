@@ -1,6 +1,6 @@
 <template>
   <div class="goods" @click="ToDetail">
-    <img v-lazy="getImg" :key="getImg" alt="">
+    <img v-lazy="getImg" :key="getImg" alt="" @load="imageLoad">
     <div class="goods-info">
       <p>{{goods.title}}</p>
       <span class="price">¥{{goods.price}}</span>
@@ -12,14 +12,21 @@
 <script>
 	export default {
     props: {
-		goods: {
-            type: Object,
-            default: {}
-        }
+      goods: {
+        type: Object,
+      }
     },
     mounted: function () {
     },
     methods: {
+      /* 跳转详情页 */
+      ToDetail() {
+
+      },
+      /* 监听图片加载完成 */
+      imageLoad() {
+        this.$chh.$emit('imageLoad')
+      }
     },
     computed: {
       getImg() {
@@ -32,6 +39,7 @@
 <style scoped>
   .goods {
     padding-bottom: 40px;
+    width: 48%;
     position: relative;
   }
   .goods img {

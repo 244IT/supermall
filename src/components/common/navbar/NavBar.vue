@@ -23,10 +23,8 @@ export default {
 
 <style>
   .nav{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     height: 44px;
