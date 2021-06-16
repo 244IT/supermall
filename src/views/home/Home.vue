@@ -7,7 +7,7 @@
       <home-recommend :recommends="recommends" />
       <home-population :goodLists="goodLists"/>
       <tab-control :tabList="tabList" @onTab="onTab" ref="tabControl2"/>
-      <good-list :goodsList="goodLists"/>
+      <good-list :goodsList="goodLists" @toDetail="toDetail"/>
     </scroll>
     <back-top @backTop="onBackTop" v-show="isShowTop"/>
   </div>
@@ -113,6 +113,11 @@ export default {
       console.log('轮播图加载完成')
       // 获取tab距离顶部的距离
       this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop
+    },
+
+    /* 跳转详情 */
+    toDetail(item) {
+      this.$router.push(`/detail/${item.item.iid}`)
     },
     /* -----------------------------------网络请求--------------------------------------- */
     /* 获取首页数据 */

@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <good-item v-for="(item, index) in goodsList" :key="index" :goods="item"></good-item>
+        <good-item v-for="(item, index) in goodsList" :key="index" :goods="item" @click.native="toDetail(item)"></good-item>
     </div>
 </template>
 
@@ -15,6 +15,13 @@
       goodsList: {
         type: Array,
         default: []
+      }
+    },
+    methods: {
+      /* 点击商品跳转详情 */
+      toDetail(item) {
+        console.log('点击')
+        this.$emit('toDetail', { item })
       }
     },
   }

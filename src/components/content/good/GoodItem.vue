@@ -21,7 +21,7 @@
     methods: {
       /* 跳转详情页 */
       ToDetail() {
-
+        
       },
       /* 监听图片加载完成 */
       imageLoad() {

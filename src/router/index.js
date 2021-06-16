@@ -4,9 +4,10 @@ import Vue from 'vue'
 Vue.use(VueRouter)
 
 const Home = () => import('../views/home/Home')
-const Profile = () => import('../views/profile/profile')
-const Category = () => import('../views/category/category')
-const Shopcart = () => import('../views/shopcart/shopcart')
+const Profile = () => import('../views/profile/Profile')
+const Category = () => import('../views/category/Category')
+const Shopcart = () => import('../views/shopcart/Shopcart')
+const Detail = () => import('../views/detail/Detail')
 
 const routes = [
     {
@@ -28,6 +29,10 @@ const routes = [
     {
         path: '/shopcart',
         component: Shopcart
+    },
+    {
+        path: '/detail/:id',
+        component: Detail
     },
 ]
 const router = new VueRouter({
