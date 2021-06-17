@@ -1,6 +1,6 @@
 <template>
   <div class="nav" :style="{ 'background-color': backgroundColor}">
-    <div class="left"><slot name="name"></slot></div>
+    <div class="left"><slot name="left"></slot></div>
     <div class="center" :style="{ 'color': color }"><slot name="center"></slot></div>
     <div class="right"><slot name="right"></slot></div>
   </div>

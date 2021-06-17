@@ -1,10 +1,15 @@
 <template>
-  <div>我是详情页</div>
+  <div class="detail">
+      <detail-nav />
+  </div>
 </template>
 
 <script>
+import DetailNav from './childCpns/DetailNav.vue'
 export default {
-
+    components: {
+        DetailNav
+    }
 }
 </script>
 
