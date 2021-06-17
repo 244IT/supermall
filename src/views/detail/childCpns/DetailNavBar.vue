@@ -1,7 +1,7 @@
 <template>
   <!-- 头部导航 -->
   <nav-bar :backgroundColor="'#FFF'">
-    <div slot="left" class="nav-left">
+    <div slot="left" class="nav-left" @click="onBack">
         <img src="~assets/img/common/back.svg" alt="" />
     </div>
     <div slot="center" class="nav-center">
@@ -26,6 +26,10 @@ export default {
   methods: {
       onNav(index) {
           this.navIndex = index
+      },
+      /* 返回 */
+      onBack() {
+        this.$router.go(-1)
       }
   },
 }

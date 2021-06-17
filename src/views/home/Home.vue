@@ -26,6 +26,7 @@ import HomeRecommend from './childCpns/HomeRecommend'
 import HomePopulation from './childCpns/HomePopulation'
 
 import { getHomeMultidata, getHomeData } from 'network/home.js'
+import { debounce } from '@/common/utils'
 
 const backTopPosition = 2000
 export default {
@@ -136,19 +137,9 @@ export default {
     /* ------------------------------------页面方法-------------------------------------- */
     /* 监听图片加载完成 */
     _listenImageLoad() {
-      this.$chh.$on('imageLoad', this._debounce(this.$refs.scroll.refresh))
+      this.$chh.$on('imageLoad', debounce(this.$refs.scroll.refresh))
     },
-    /* 函数防抖 */
-    _debounce(fun, delay) {
-      console.log('防抖')
-      let timer = null
-      return function(...args) {
-        if(timer) clearTimeout(timer)
-        timer = setTimeout(() => {
-          fun.apply(this, args)
-        }, delay)
-      }
-    }
+    
   },
   
 }

@@ -31,7 +31,7 @@ export default {
     /* 监听图片加载完成 */
     swiperImageLoad() {
       if(this.flag) return
-      this.$emit('swiperImageLoad')
+      this.$emit('detailSwiperImageLoad')
       this.flag = true
     }
   },
